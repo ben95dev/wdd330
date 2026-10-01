@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ReadSpace | Find your next book</title>
+  <meta name="description" content="Search books, save what you want to read, and track your progress in one place.">
+  <link rel="icon" href="images/icon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <script type="module" src="js/main.js"></script>
+</head>
+<body data-page="home">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header id="site-header" class="site-header"></header>
+
+  <main id="main">
+    <section class="hero">
+      <div class="container">
+        <h1>Find your next book.</h1>
+        <p class="lead">Search by title, author, or keyword, then save what you want to read.</p>
+
+        <form class="search-form" action="search.html" method="get" role="search">
+          <label class="visually-hidden" for="home-q">Search books</label>
+          <input id="home-q" type="search" name="q" placeholder="Try &quot;Pride and Prejudice&quot; or &quot;Octavia Butler&quot;" required>
+          <button class="btn btn-cta" type="submit">Search</button>
+        </form>
+
+        <ul class="chip-list" aria-label="Browse by subject">
+          <li><a class="chip" href="search.html?q=subject%3Afantasy">Fantasy</a></li>
+          <li><a class="chip" href="search.html?q=subject%3A%22science+fiction%22">Science fiction</a></li>
+          <li><a class="chip" href="search.html?q=subject%3Amystery">Mystery</a></li>
+          <li><a class="chip" href="search.html?q=subject%3Ahistory">History</a></li>
+          <li><a class="chip" href="search.html?q=subject%3Aromance">Romance</a></li>
+          <li><a class="chip" href="search.html?q=subject%3Abiography">Biography</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="popular-heading">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="popular-heading">Popular right now</h2>
+        </div>
+        <div id="popular-message"></div>
+        <ul id="popular-grid" class="book-grid"></ul>
+      </div>
+    </section>
+  </main>
+
+  <footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>

@@ -1,0 +1,98 @@
+/* site.css — portal and site plan pages (same look as the ReadSpace app) */
+:root {
+  --green: #115740;
+  --clay: #d12421;
+  --sand: #f9f6f0;
+  --white: #ffffff;
+  --text: #333333;
+  --muted: #5a5f58;
+  --line: #e3ddd0;
+  --font-heading: "Montserrat", system-ui, sans-serif;
+  --font-body: "Open Sans", system-ui, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--sand);
+  color: var(--text);
+  font-family: var(--font-body);
+  line-height: 1.65;
+}
+
+header {
+  background: var(--green);
+  color: var(--sand);
+  padding: 32px 16px;
+  text-align: center;
+}
+header h1 { margin: 0 0 4px; color: var(--sand); }
+header p { margin: 0; }
+
+h1, h2, h3 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--green);
+}
+h1 { font-size: clamp(1.75rem, 5vw, 2.5rem); }
+h2 { font-size: 1.5rem; margin: 40px 0 8px; }
+h3 { font-size: 1.15rem; margin: 24px 0 8px; }
+
+main { flex: 1; width: 100%; max-width: 860px; margin: 0 auto; padding: 32px 16px 16px; }
+
+a { color: var(--clay); font-weight: 600; }
+a:hover { text-decoration-thickness: 3px; }
+:focus-visible { outline: 3px solid var(--clay); outline-offset: 3px; }
+header :focus-visible, footer :focus-visible { outline-color: var(--sand); }
+
+.card {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 8px rgba(17, 87, 64, 0.1);
+}
+.card h2, .card h3 { margin-top: 0; }
+
+.btn {
+  display: inline-block;
+  padding: 12px 24px;
+  background: var(--clay);
+  color: var(--white);
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+}
+.btn:hover { background: #b51d1a; }
+.btn-secondary { background: var(--green); }
+.btn-secondary:hover { background: #0c4331; }
+
+.swatch-row { display: flex; align-items: center; gap: 16px; margin: 16px 0 4px; }
+.swatch { flex: none; width: 48px; height: 48px; border-radius: 8px; border: 1px solid rgba(0,0,0,.15); }
+.swatch-row strong { display: block; }
+
+.wireframe { margin: 24px 0; }
+.wireframe img { width: 100%; height: auto; border: 1px solid var(--line); border-radius: 8px; background: var(--white); }
+.wireframe figcaption { margin-top: 8px; font-size: 0.95rem; color: var(--muted); }
+
+.table-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; background: var(--white); }
+th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { background: var(--green); color: var(--sand); font-family: var(--font-heading); }
+code { background: #ece7da; padding: 1px 6px; border-radius: 4px; font-size: 0.92em; }
+
+.plan-nav { display: flex; flex-wrap: wrap; gap: 8px 16px; padding: 0; list-style: none; margin: 0 0 8px; }
+
+footer { background: var(--green); color: var(--sand); text-align: center; padding: 24px 16px; margin-top: 32px; }
+footer a { color: var(--sand); }
+
+@media (min-width: 601px) {
+  header { padding: 48px 24px; }
+  main { padding-inline: 24px; }
+}

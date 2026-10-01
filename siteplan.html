@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Benjamin Iriganje">
+  <meta name="description" content="Site plan for ReadSpace, a book discovery and reading tracker.">
+  <title>ReadSpace - Site Plan</title>
+  <link rel="icon" href="images/icon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="css/site.css">
+</head>
+
+<body>
+  <header>
+    <h1>ReadSpace</h1>
+    <p>Site Planning Document</p>
+  </header>
+
+  <main>
+    <nav aria-label="On this page">
+      <ul class="plan-nav">
+        <li><a href="index.html">Portal</a></li>
+        <li><a href="app/index.html">Open the app</a></li>
+        <li><a href="#purpose">Purpose</a></li>
+        <li><a href="#audience">Audience</a></li>
+        <li><a href="#functions">Functions</a></li>
+        <li><a href="#wireframes">Wireframes</a></li>
+        <li><a href="#data">Data</a></li>
+        <li><a href="#modules">Modules</a></li>
+        <li><a href="#look">Look</a></li>
+        <li><a href="#timeline">Timeline</a></li>
+      </ul>
+    </nav>
+
+    <h2>Site Name</h2>
+    <p><strong>Name:</strong> ReadSpace</p>
+    <p><strong>Reasoning:</strong> Finding a book, finding a free copy, and remembering what you want to read or have
+      finished usually means juggling several websites, notes or apps. The name says what the site is: one space for
+      reading. ReadSpace puts all of it in one simple place.</p>
+
+    <h2 id="purpose">Overview</h2>
+    <p>ReadSpace is a web application that lets people search for books, learn about them, find free public-domain
+      books, and keep a personal library with reading progress. It also covers the main skills of this course: working
+      with APIs, handling data, saving user data in the browser, and building a responsive interface.</p>
+
+    <h2 id="audience">Target Audience Scenarios</h2>
+    <p>ReadSpace is for students, casual readers and anyone who wants help choosing what to read next. The site should
+      answer questions like these:</p>
+    <ul>
+      <li><em>"I need to read a classic for class and I can't afford to buy it. Where can I find a free copy?"</em></li>
+      <li><em>"I don't know what to read next. Can I browse a subject or get a random suggestion?"</em></li>
+      <li><em>"I want to keep track of what I'm reading and what I've finished, without creating an account."</em></li>
+    </ul>
+
+    <h2 id="functions">Major Functions</h2>
+    <ul>
+      <li><strong>Book search.</strong> Type a title, author or keyword and see results from Open Library as cards with
+        cover, title and author.</li>
+      <li><strong>Book details.</strong> Open a card to see a larger cover, author, first publication year and subjects.
+      </li>
+      <li><strong>Filtering.</strong> Narrow results by subject, author and publication year without a new search.</li>
+      <li><strong>Favorites.</strong> Save a book to a favorites list stored in localStorage and remove it any time.
+      </li>
+      <li><strong>Reading list and status.</strong> Add books to My Library and mark each one Want to Read, Reading or
+        Completed.</li>
+      <li><strong>Public-domain discovery.</strong> Browse or search free Project Gutenberg books through Gutendex and
+        open or download them.</li>
+      <li><strong>Discover a Book.</strong> One button picks a random book from popular subjects.</li>
+      <li><strong>Responsive interface.</strong> The layout adapts to mobile, tablet and desktop, with a menu button on
+        small screens and one to four cards per row.</li>
+      <li><strong>Error and empty states.</strong> Friendly messages for no results, missing covers or a failed request,
+        with a retry option.</li>
+    </ul>
+
+    <h2 id="wireframes">Wireframes</h2>
+    <p>Each wireframe shows the desktop layout on the left and the mobile layout on the right. Tablet uses the desktop
+      structure with fewer columns. The wireframes were drawn before the site colors were finalized, so refer to the
+      color section below for the final look.</p>
+
+    <figure class="wireframe">
+      <img src="images/wireframes/home.png"
+        alt="Home wireframe: search box, Discover a Book button, popular and free books, shown for desktop and mobile"
+        width="1400" height="760">
+      <figcaption>Home: search, Discover a Book, popular and free books.</figcaption>
+    </figure>
+    <figure class="wireframe">
+      <img src="images/wireframes/search.png"
+        alt="Search wireframe: filters, source toggle and results grid, shown for desktop and mobile" width="1400"
+        height="760">
+      <figcaption>Search: filters, source toggle and results grid.</figcaption>
+    </figure>
+    <figure class="wireframe">
+      <img src="images/wireframes/details.png"
+        alt="Book details wireframe: cover, information and action buttons, shown for desktop and mobile" width="1400"
+        height="760">
+      <figcaption>Book details: information and actions.</figcaption>
+    </figure>
+    <figure class="wireframe">
+      <img src="images/wireframes/library.png"
+        alt="My Library wireframe: tabs by status with change-status and remove controls, shown for desktop and mobile"
+        width="1400" height="760">
+      <figcaption>My Library: tabs by status, with status change and remove.</figcaption>
+    </figure>
+
+    <h2 id="data">External Data</h2>
+    <h3>APIs</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>API</th>
+            <th>What I will use</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Open Library</strong></td>
+            <td>Search (<code>openlibrary.org/search.json?q=</code>), work details, subject lists, and covers
+              (<code>covers.openlibrary.org</code>)</td>
+            <td>No API key. Some results lack covers or years.</td>
+          </tr>
+          <tr>
+            <td><strong>Gutendex</strong></td>
+            <td>Search public-domain books (<code>gutendex.com/books/?search=</code>) with authors, subjects and
+              download links</td>
+            <td>No API key. Results come in pages.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <h3>Data stored in localStorage</h3>
+    <ul>
+      <li><code>readspace_favorites</code>: an array of saved books (id, title, author, cover URL, source).</li>
+      <li><code>readspace_library</code>: an array of books with a status of <code>want</code>, <code>reading</code> or
+        <code>completed</code>, plus the date added.
+      </li>
+      <li><code>readspace_lastSearch</code>: the last search and filters, so returning to results feels quick
+        (optional).</li>
+    </ul>
+
+    <h2 id="modules">Module List</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Module</th>
+            <th>Responsibility</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>main.js</code></td>
+            <td>Starts the app and connects the pages</td>
+          </tr>
+          <tr>
+            <td><code>navigation.js</code></td>
+            <td>Menu, active link, mobile toggle</td>
+          </tr>
+          <tr>
+            <td><code>api/openLibrary.js</code></td>
+            <td>Search and detail requests; cleans up the returned data</td>
+          </tr>
+          <tr>
+            <td><code>api/gutendex.js</code></td>
+            <td>Public-domain requests; formats download links</td>
+          </tr>
+          <tr>
+            <td><code>search.js</code></td>
+            <td>Search form, loading state, results</td>
+          </tr>
+          <tr>
+            <td><code>home.js</code></td>
+            <td>Popular books row on the home page</td>
+          </tr>
+          <tr>
+            <td><code>filters.js</code></td>
+            <td>Filter controls and filtering logic</td>
+          </tr>
+          <tr>
+            <td><code>bookCard.js</code></td>
+            <td>Builds a book card from normalized data</td>
+          </tr>
+          <tr>
+            <td><code>details.js</code></td>
+            <td>Details view and its buttons</td>
+          </tr>
+          <tr>
+            <td><code>library.js</code></td>
+            <td>My Library tabs, status changes and removal</td>
+          </tr>
+          <tr>
+            <td><code>storage.js</code></td>
+            <td>Read and write favorites and library in localStorage</td>
+          </tr>
+          <tr>
+            <td><code>discover.js</code></td>
+            <td>Random book logic</td>
+          </tr>
+          <tr>
+            <td><code>utils.js</code></td>
+            <td>Shared helpers (placeholders, text, errors)</td>
+          </tr>
+          <tr>
+            <td><code>css/</code></td>
+            <td><code>base.css</code>, <code>layout.css</code>, <code>components.css</code></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 id="look">Color Schema</h2>
+    <p>The colors are shared with my Travel Burundi site so my projects feel like one family.</p>
+    <div class="swatch-row"><span class="swatch" style="background:#115740"></span>
+      <div><strong>Deep Forest Green <code>#115740</code></strong>Headers, navigation, headings and main buttons.</div>
+    </div>
+    <div class="swatch-row"><span class="swatch" style="background:#D12421"></span>
+      <div><strong>Warm Clay Red <code>#D12421</code></strong>Calls to action, links and interactive elements.</div>
+    </div>
+    <div class="swatch-row"><span class="swatch" style="background:#F9F6F0"></span>
+      <div><strong>Sand Off-White <code>#F9F6F0</code></strong>Main background on every page.</div>
+    </div>
+    <div class="swatch-row"><span class="swatch" style="background:#FFFFFF"></span>
+      <div><strong>White <code>#FFFFFF</code></strong>Cards, with a soft shadow.</div>
+    </div>
+    <div class="swatch-row"><span class="swatch" style="background:#333333"></span>
+      <div><strong>Dark Gray <code>#333333</code></strong>Body text.</div>
+    </div>
+
+    <h2>Typography</h2>
+    <h3>Heading Font: Montserrat (Bold)</h3>
+    <p>A clean, geometric sans-serif for all titles and section headers (H1, H2, H3).</p>
+    <h3>Body Font: Open Sans (Regular/Semi-Bold)</h3>
+    <p>A highly legible sans-serif for paragraphs, lists and card text on both phones and desktop monitors.</p>
+    <h3>Styling details</h3>
+    <p>12px rounded corners on cards, 8px on buttons, an 8px spacing scale, and a visible focus outline for
+      accessibility. Breakpoints: mobile up to 600px, tablet 601 to 1024px, desktop above 1024px.</p>
+
+    <h2 id="timeline">Timeline</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Week</th>
+            <th>Planned deliverables</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Week 5</strong></td>
+            <td>Repository and folder structure; shared layout; navigation; home page; Open Library module; search form
+              and book cards working with real data.</td>
+          </tr>
+          <tr>
+            <td><strong>Week 6</strong></td>
+            <td>Book details page; filters; localStorage module; favorites; reading list and status changes; My Library
+              page with tabs.</td>
+          </tr>
+          <tr>
+            <td><strong>Week 7</strong></td>
+            <td>Gutendex module and free-books view; Discover a Book; responsive and accessibility polish; error states;
+              testing on mobile and desktop; deploy and final fixes.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>Challenges</h2>
+    <ul>
+      <li><strong>Combining two APIs.</strong> They return differently shaped data, so both are converted to one common
+        book format.</li>
+      <li><strong>Incomplete data.</strong> Many books lack covers, years or descriptions, so the interface uses
+        placeholders and defaults.</li>
+      <li><strong>Speed and errors.</strong> Requests can be slow or fail, so loading and error states are needed and
+        needless calls avoided.</li>
+      <li><strong>Managing saved data.</strong> Favorites, list and status must stay consistent across pages.</li>
+      <li><strong>Responsive design.</strong> Cards, filters and the library need testing on small screens.</li>
+      <li><strong>Time.</strong> Ten features in three weeks is a lot, so core features come first and extras stay
+        optional.</li>
+    </ul>
+
+    <!-- Add the Trello board link here when you have it:
+    <h2>Project Planning</h2>
+    <p><a href="YOUR-TRELLO-LINK">ReadSpace Trello board</a></p>
+    -->
+  </main>
+
+  <footer>
+    <p>&copy; <span id="year"></span> Benjamin Iriganje</p>
+    <p><a href="index.html">Back to the portal</a></p>
+  </footer>
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+
+</html>
