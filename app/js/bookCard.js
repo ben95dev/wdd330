@@ -1,5 +1,9 @@
 // bookCard.js — builds one book card from a normalized book object.
+// The book's data is also stored on the card in data-* attributes
+// (data-id, data-source, data-title, ...) so one click handler can read it
+// with element.dataset instead of searching the page.
 import { createEl } from "./utils.js";
+import { isFavorite } from "./storage.js";
 
 function createCover(book) {
   const wrap = createEl("div", { className: "book-card__cover" });
@@ -31,6 +35,18 @@ function createCover(book) {
   return wrap;
 }
 
+/** Update the Save button's label for the saved / not-saved state. */
+export function setFavoriteButton(button, saved, title) {
+  button.replaceChildren(
+    document.createTextNode(saved ? "Saved ✓" : "Save"),
+    createEl("span", {
+      className: "visually-hidden",
+      text: saved ? ` – remove ${title} from saved books` : ` ${title} for later`,
+    })
+  );
+  button.classList.toggle("is-saved", saved);
+}
+
 export function createBookCard(book) {
   const detailsUrl = `details.html?id=${encodeURIComponent(book.id)}&source=${book.source}`;
 
@@ -43,6 +59,25 @@ export function createBookCard(book) {
     ]),
   ]);
 
-  // The <article> wrapper leaves room for favorite/status buttons in Week 6.
-  return createEl("li", {}, [createEl("article", { className: "book-card" }, [link])]);
+  const saved = isFavorite(book.id, book.source);
+  const button = createEl("button", { className: "btn btn-outline fav-btn", attrs: { type: "button" } });
+  setFavoriteButton(button, saved, book.title);
+
+  const card = createEl("article", { className: "book-card" }, [
+    link,
+    createEl("div", { className: "book-card__actions" }, [button]),
+  ]);
+
+  // Book data lives on the card as data-* attributes (see favorites.js).
+  Object.assign(card.dataset, {
+    id: book.id,
+    source: book.source,
+    title: book.title,
+    author: book.author,
+    year: book.year ?? "",
+    coverUrl: book.coverUrl ?? "",
+    saved: String(saved),
+  });
+
+  return createEl("li", {}, [card]);
 }

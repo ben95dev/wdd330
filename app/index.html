@@ -31,13 +31,35 @@
         </form>
 
         <ul class="chip-list" aria-label="Browse by subject">
-          <li><a class="chip" href="search.html?q=subject%3Afantasy">Fantasy</a></li>
-          <li><a class="chip" href="search.html?q=subject%3A%22science+fiction%22">Science fiction</a></li>
-          <li><a class="chip" href="search.html?q=subject%3Amystery">Mystery</a></li>
-          <li><a class="chip" href="search.html?q=subject%3Ahistory">History</a></li>
-          <li><a class="chip" href="search.html?q=subject%3Aromance">Romance</a></li>
-          <li><a class="chip" href="search.html?q=subject%3Abiography">Biography</a></li>
+          <li><a class="chip" href="search.html?q=subject%3Afantasy" data-subject="fantasy">Fantasy</a></li>
+          <li><a class="chip" href="search.html?q=subject%3A%22science+fiction%22" data-subject="science fiction">Science fiction</a></li>
+          <li><a class="chip" href="search.html?q=subject%3Amystery" data-subject="mystery">Mystery</a></li>
+          <li><a class="chip" href="search.html?q=subject%3Ahistory" data-subject="history">History</a></li>
+          <li><a class="chip" href="search.html?q=subject%3Aromance" data-subject="romance">Romance</a></li>
+          <li><a class="chip" href="search.html?q=subject%3Abiography" data-subject="biography">Biography</a></li>
         </ul>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="discover-heading">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="discover-heading">Not sure what to read?</h2>
+        </div>
+        <p>Let ReadSpace pick a book from one of the subjects above.</p>
+        <button id="discover-btn" class="btn btn-primary" type="button">Discover a book</button>
+        <p id="discover-status" class="results-status" role="status" aria-live="polite"></p>
+        <ul id="discover-result" class="book-grid"></ul>
+      </div>
+    </section>
+
+    <section id="saved-section" class="section" aria-labelledby="saved-heading" hidden>
+      <div class="container">
+        <div class="section-head">
+          <h2 id="saved-heading">Saved for later</h2>
+          <span id="saved-count" class="section-note"></span>
+        </div>
+        <ul id="saved-grid" class="book-grid"></ul>
       </div>
     </section>
 

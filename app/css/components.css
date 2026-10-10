@@ -166,3 +166,42 @@
   justify-content: center;
   margin-top: var(--space-4);
 }
+
+/* ---------- Week 6 additions: save buttons, skeletons, hero, notes ---------- */
+
+/* Cards are a column: link on top, Save button underneath */
+.book-grid > li { display: flex; }
+.book-grid > li > .book-card { flex: 1; min-width: 0; }
+.book-card { display: flex; flex-direction: column; }
+.book-card__link { flex: 1; height: auto; }
+.book-card__actions { padding: 0 var(--space-2) var(--space-2); }
+.fav-btn { width: 100%; min-height: 44px; padding-block: 6px; }
+.fav-btn.is-saved { background: var(--green); color: var(--sand); }
+.fav-btn.is-saved:hover { background: #0c4331; }
+.book-card[data-saved="true"] {
+  box-shadow: 0 0 0 2px var(--green), var(--shadow-card);
+}
+
+/* Loading placeholders for the Popular row */
+.book-skeleton {
+  height: 168px;
+  border-radius: var(--radius-card);
+  background: linear-gradient(90deg, #ece7da 25%, #f6f2e8 50%, #ece7da 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.2s linear infinite;
+}
+@keyframes shimmer { to { background-position: -200% 0; } }
+@media (min-width: 601px) {
+  .book-skeleton { height: auto; aspect-ratio: 2 / 3.6; }
+}
+
+/* Hero: green band, matching the header and the portal */
+.hero { background: var(--green); color: var(--sand); }
+.hero h1 { color: var(--sand); }
+.hero p.lead { color: var(--sand); }
+.hero :focus-visible { outline-color: var(--sand); }
+.hero .search-form input[type="search"] { border-color: var(--sand); }
+.hero .chip { border-color: transparent; }
+.hero .chip:hover { background: var(--sand); border-color: var(--sand); }
+
+.section-note { color: var(--muted); font-size: 0.95rem; }

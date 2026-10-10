@@ -3,12 +3,14 @@
 Book discovery and reading tracker by Benjamin Iriganje.
 
 ```
-index.html          Project portal (links to the app and the site plan)
+index.html          Project portal (app, site plan, Trello board, course work)
+datasets.html       W05 Datasets learning activity
 siteplan.html       Site plan document
 css/site.css        Styles for the portal and site plan
 images/             Icon and the four wireframes
 app/                The ReadSpace app
   index.html  search.html  details.html (placeholder until Week 6)
+  js/storage.js  favorites.js  discover.js (home page features)
   css/  js/  images/
 ```
 
@@ -31,4 +33,6 @@ All links are relative, so a different repository name works too.
 ## Status
 
 Week 5 done: layout, navigation, home page, Open Library module, search with loading/empty/error states, book cards.
-Next (Week 6): `storage.js`, `details.js`, `filters.js`, `library.js`, favorites and status buttons.
+Home page upgrade: data-* attributes on every book card, Save button (localStorage via `storage.js`), Saved for later row,
+Discover a book, loading placeholders.
+Next (Week 6): `details.js`, `filters.js`, `library.js`, status buttons.

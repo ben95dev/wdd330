@@ -60,6 +60,7 @@ export function initNavigation() {
 
   footer.replaceChildren(
     createEl("div", { className: "container" }, [
+      createEl("p", { text: `© ${new Date().getFullYear()} Benjamin Iriganje` }),
       createEl("p", { text: "ReadSpace · a WDD 330 project by Benjamin Iriganje" }),
       createEl("p", {}, [createEl("a", { text: "Site plan", attrs: { href: "../siteplan.html" } })]),
       createEl("p", { text: "Book data from Open Library. Free books from Project Gutenberg (coming soon)." }),
