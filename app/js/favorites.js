@@ -1,5 +1,6 @@
 // favorites.js — one click handler for every Save button on every page.
-// It reads the book from the card's data-* attributes (card.dataset).
+// It reads the book from the data-* attributes of the nearest element that
+// holds book data (a book card, or the article on the details page).
 import { createEl } from "./utils.js";
 import { toggleFavorite } from "./storage.js";
 import { setFavoriteButton } from "./bookCard.js";
@@ -16,7 +17,7 @@ export function initFavorites() {
     const button = event.target.closest(".fav-btn");
     if (!button) return;
 
-    const { id, source, title, author, year, coverUrl } = button.closest(".book-card").dataset;
+    const { id, source, title, author, year, coverUrl } = button.closest("[data-source]").dataset;
     const saved = toggleFavorite({
       id,
       source,
@@ -32,7 +33,7 @@ export function initFavorites() {
     }
 
     // The same book can appear twice on a page (popular + saved), so sync every copy.
-    document.querySelectorAll(".book-card").forEach((card) => {
+    document.querySelectorAll("[data-source][data-id]").forEach((card) => {
       if (card.dataset.id === id && card.dataset.source === source) {
         card.dataset.saved = String(saved);
         setFavoriteButton(card.querySelector(".fav-btn"), saved, card.dataset.title);

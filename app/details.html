@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Book details | ReadSpace</title>
+  <meta name="description" content="Details for one book: cover, description, subjects, and where to read it.">
+  <meta name="author" content="Benjamin Iriganje">
   <link rel="icon" href="images/icon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,12 +21,10 @@
 
   <main id="main">
     <div class="container">
-      <!-- Week 6: replace this placeholder with js/details.js output -->
-      <div class="message">
-        <h1>Book details are coming next</h1>
-        <p>This page will show the larger cover, subjects, and save buttons.</p>
-        <a class="btn btn-primary" href="search.html">Back to search</a>
-      </div>
+      <noscript><p class="message">ReadSpace needs JavaScript to load books. Please turn it on and reload the page.</p></noscript>
+      <p class="back-link"><a href="search.html">&larr; Back to search</a></p>
+      <div id="details-message"></div>
+      <div id="details-content"></div>
     </div>
   </main>
 

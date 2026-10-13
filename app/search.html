@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Search | ReadSpace</title>
   <meta name="description" content="Search millions of books by title, author, or keyword.">
+  <meta name="author" content="Benjamin Iriganje">
   <link rel="icon" href="images/icon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,6 +21,7 @@
 
   <main id="main">
     <div class="container">
+      <noscript><p class="message">ReadSpace needs JavaScript to load books. Please turn it on and reload the page.</p></noscript>
       <div class="page-title-bar">
         <h1>Search books</h1>
         <form id="search-form" class="search-form" action="search.html" method="get" role="search">
@@ -29,8 +31,7 @@
         </form>
       </div>
 
-      <!-- Filters arrive in Week 6 -->
-
+      <h2 class="visually-hidden">Results</h2>
       <p id="results-status" class="results-status" role="status" aria-live="polite"></p>
       <div id="results-message"></div>
       <ul id="results-grid" class="book-grid"></ul>

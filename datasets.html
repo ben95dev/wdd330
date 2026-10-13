@@ -10,21 +10,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/site.css">
-  <style>
-    /* page-specific styles for the activity */
-    .demo-list { list-style: none; padding: 0; margin: 0 0 16px; }
-    .demo-list li { padding: 12px 16px; margin-bottom: 8px; border-radius: 8px; cursor: pointer; border: 1px solid var(--line); }
-    .demo-list li:focus-visible { outline: 3px solid var(--clay); outline-offset: 2px; }
-    /* Style by data-category */
-    li[data-category="fruit"]     { background-color: lightyellow; }
-    li[data-category="vegetable"] { background-color: lightgreen; }
-    li[data-category="dairy"]     { background-color: lightblue; }
-    /* ReadSpace-style status markers */
-    li[data-status="reading"]   { border-left: 6px solid var(--clay); }
-    li[data-status="completed"] { border-left: 6px solid var(--green); }
-    li[data-status="want"]      { border-left: 6px solid #999; }
-    .details-box { background: var(--white); border: 1px solid var(--line); border-radius: 12px; padding: 16px; }
-  </style>
+  <link rel="stylesheet" href="css/datasets.css">
+  <script src="js/site.js" defer></script>
+  <script src="js/datasets.js" defer></script>
 </head>
 <body>
   <header>
@@ -55,44 +43,10 @@
 
   <footer>
     <p>&copy; <span id="year"></span> Benjamin Iriganje</p>
-    <p>Book data from <a href="https://openlibrary.org">Open Library</a>.</p>
+    <p>ReadSpace &middot; a WDD 330 project</p>
+    <p><a href="index.html">Project portal</a> &middot; <a href="siteplan.html">Site plan</a> &middot; <a href="app/index.html">Open the app</a></p>
+    <p>Book data from <a href="https://openlibrary.org">Open Library</a>. Free books from
+      <a href="https://www.gutenberg.org">Project Gutenberg</a>, through <a href="https://gutendex.com">Gutendex</a>.</p>
   </footer>
-  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
-
-  <script>
-    // Log every item's dataset values
-    const items = document.querySelectorAll('#items li');
-    items.forEach(item => {
-      console.log('Name:', item.dataset.name);
-      console.log('Category:', item.dataset.category);
-      console.log('Color:', item.dataset.color);
-    });
-
-    // Show details on click (or Enter/Space for keyboard users)
-    const details = document.querySelector('#details');
-    function showItem(item) {
-      details.innerHTML = `
-        <h2>Item Details</h2>
-        <p>Name: ${item.dataset.name}</p>
-        <p>Category: ${item.dataset.category}</p>
-        <p>Color: ${item.dataset.color}</p>`;
-    }
-    items.forEach(item => {
-      item.addEventListener('click', () => showItem(item));
-      item.addEventListener('keydown', e => {
-        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); showItem(item); }
-      });
-    });
-
-    // Book example: read data-id, data-source and data-status, and change status via dataset
-    const bookDetails = document.querySelector('#bookDetails');
-    document.querySelectorAll('#books li').forEach(book => {
-      const show = () => {
-        bookDetails.textContent = `ID: ${book.dataset.id} | Source: ${book.dataset.source} | Status: ${book.dataset.status}`;
-      };
-      book.addEventListener('click', show);
-      book.addEventListener('keydown', e => { if (e.key === 'Enter') show(); });
-    });
-  </script>
 </body>
 </html>

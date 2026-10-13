@@ -5,9 +5,8 @@ import { createEl } from "./utils.js";
 const NAV_LINKS = [
   { href: "index.html", label: "Home", page: "home" },
   { href: "search.html", label: "Search", page: "search" },
+  { href: "free.html", label: "Free books", page: "free" },
   { href: "../index.html", label: "Project portal", page: "portal" },
-  // Week 6: { href: "library.html", label: "My Library", page: "library" },
-  // Week 7: { href: "free.html", label: "Free books", page: "free" },
 ];
 
 const MENU_ICON =
@@ -58,12 +57,21 @@ export function initNavigation() {
     }
   });
 
+  const link = (label, href) => createEl("a", { text: label, attrs: { href } });
+  const dot = () => document.createTextNode(" \u00b7 ");
+
   footer.replaceChildren(
     createEl("div", { className: "container" }, [
-      createEl("p", { text: `© ${new Date().getFullYear()} Benjamin Iriganje` }),
-      createEl("p", { text: "ReadSpace · a WDD 330 project by Benjamin Iriganje" }),
-      createEl("p", {}, [createEl("a", { text: "Site plan", attrs: { href: "../siteplan.html" } })]),
-      createEl("p", { text: "Book data from Open Library. Free books from Project Gutenberg (coming soon)." }),
+      createEl("p", { text: `\u00a9 ${new Date().getFullYear()} Benjamin Iriganje` }),
+      createEl("p", { text: "ReadSpace \u00b7 a WDD 330 project" }),
+      createEl("p", {}, [
+        link("Project portal", "../index.html"), dot(), link("Site plan", "../siteplan.html"), dot(), link("Open the app", "index.html"),
+      ]),
+      createEl("p", {}, [
+        document.createTextNode("Book data from "), link("Open Library", "https://openlibrary.org"),
+        document.createTextNode(". Free books from "), link("Project Gutenberg", "https://www.gutenberg.org"),
+        document.createTextNode(", through "), link("Gutendex", "https://gutendex.com"), document.createTextNode("."),
+      ]),
     ])
   );
 }

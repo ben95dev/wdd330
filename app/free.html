@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Free books | ReadSpace</title>
+  <meta name="description" content="Read public-domain classics for free. Search thousands of Project Gutenberg books by title or author.">
+  <meta name="author" content="Benjamin Iriganje">
+  <link rel="icon" href="images/icon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <script type="module" src="js/main.js"></script>
+</head>
+<body data-page="free">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header id="site-header" class="site-header"></header>
+
+  <main id="main">
+    <div class="container">
+      <noscript><p class="message">ReadSpace needs JavaScript to load books. Please turn it on and reload the page.</p></noscript>
+      <div class="page-title-bar">
+        <h1>Free books</h1>
+        <p>Public-domain books from Project Gutenberg. Read them online or download them for free.</p>
+        <form id="free-form" class="search-form" action="free.html" method="get" role="search">
+          <label class="visually-hidden" for="free-q">Search free books</label>
+          <input id="free-q" type="search" name="q" placeholder="Title or author, such as Dickens">
+          <label class="visually-hidden" for="free-lang">Language</label>
+          <select id="free-lang" name="lang">
+            <option value="en">English</option>
+            <option value="fr">French</option>
+            <option value="es">Spanish</option>
+            <option value="de">German</option>
+            <option value="pt">Portuguese</option>
+          </select>
+          <button class="btn btn-cta" type="submit">Search</button>
+        </form>
+      </div>
+
+      <h2 class="visually-hidden">Results</h2>
+      <p id="results-status" class="results-status" role="status" aria-live="polite"></p>
+      <div id="results-message"></div>
+      <ul id="results-grid" class="book-grid"></ul>
+
+      <div id="load-more-wrap" class="load-more-wrap" hidden>
+        <button id="load-more" class="btn btn-outline" type="button">Show more books</button>
+      </div>
+    </div>
+  </main>
+
+  <footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>

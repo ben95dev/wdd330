@@ -1,0 +1,13 @@
+{
+  "name": "readspace",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "ReadSpace - WDD 330 final project",
+  "scripts": {
+    "lint": "eslint app/js"
+  },
+  "devDependencies": {
+    "eslint": "^9.0.0"
+  }
+}

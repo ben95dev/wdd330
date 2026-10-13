@@ -14,6 +14,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="css/site.css">
+  <script src="js/site.js" defer></script>
 </head>
 
 <body>
@@ -25,8 +26,9 @@
   <main>
     <section class="card">
       <h2>Open the app</h2>
-      <p>Search millions of books from Open Library, see who wrote them, discover a random pick, and save the ones you
-        want to read. Your saved books stay in your browser, with no account needed.</p>
+      <p>Search millions of books from Open Library, read free public-domain books from Project Gutenberg, discover a
+        random pick, and save the ones you want to read. Your saved books stay in your browser, with no account needed.
+      </p>
       <p><a class="btn" href="app/index.html">Launch ReadSpace</a></p>
     </section>
 
@@ -53,9 +55,13 @@
 
   <footer>
     <p>&copy; <span id="year"></span> Benjamin Iriganje</p>
-    <p>Book data from <a href="https://openlibrary.org">Open Library</a>.</p>
+    <p>ReadSpace &middot; a WDD 330 project</p>
+    <p><a href="index.html">Project portal</a> &middot; <a href="siteplan.html">Site plan</a> &middot; <a
+        href="app/index.html">Open the app</a></p>
+    <p>Book data from <a href="https://openlibrary.org">Open Library</a>. Free books from
+      <a href="https://www.gutenberg.org">Project Gutenberg</a>, through <a href="https://gutendex.com">Gutendex</a>.
+    </p>
   </footer>
-  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
 </body>
 
 </html>

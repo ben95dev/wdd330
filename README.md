@@ -9,8 +9,8 @@ siteplan.html       Site plan document
 css/site.css        Styles for the portal and site plan
 images/             Icon and the four wireframes
 app/                The ReadSpace app
-  index.html  search.html  details.html (placeholder until Week 6)
-  js/storage.js  favorites.js  discover.js (home page features)
+  index.html  search.html  free.html  details.html
+  js/  main.js + one module per feature; api/openLibrary.js and api/gutendex.js
   css/  js/  images/
 ```
 
@@ -30,9 +30,19 @@ The app uses ES modules, which do not load from `file://`. Serve the folder:
 
 All links are relative, so a different repository name works too.
 
+## Lint
+
+```
+npm install
+npm run lint
+```
+
 ## Status
 
-Week 5 done: layout, navigation, home page, Open Library module, search with loading/empty/error states, book cards.
-Home page upgrade: data-* attributes on every book card, Save button (localStorage via `storage.js`), Saved for later row,
-Discover a book, loading placeholders.
-Next (Week 6): `details.js`, `filters.js`, `library.js`, status buttons.
+Done: layout, navigation, home page, search with loading / empty / error states, book cards with data-* attributes,
+Save button (localStorage via `storage.js`), Saved for later row, Discover a book, book details page
+(`details.js`), and Free books (`free.js`, Gutendex API) with a Free to read row on the home page.
+
+APIs: Open Library (`api/openLibrary.js`) and Gutendex (`api/gutendex.js`).
+
+Not built: My Library with reading status (planned in the site plan, left on the Trello board).

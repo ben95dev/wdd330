@@ -14,12 +14,18 @@ export function getParams() {
   return new URLSearchParams(window.location.search);
 }
 
-/** Turn a thrown error into a message a reader can act on. */
-export function friendlyError(error) {
+/**
+ * Turn a thrown error into a message a reader can act on.
+ * A failed fetch() throws a TypeError (no connection); anything else means the
+ * service answered with an error status.
+ * @param {Error} error
+ * @param {string} serviceName  which API failed, e.g. "Open Library" or "Gutendex"
+ */
+export function friendlyError(error, serviceName = "Open Library") {
   if (error instanceof TypeError) {
-    return "We couldn't reach Open Library. Check your connection and try again.";
+    return `We couldn't reach ${serviceName}. Check your connection and try again.`;
   }
-  return "Open Library had a problem loading these books. Try again in a moment.";
+  return `${serviceName} had a problem loading these books. Try again in a moment.`;
 }
 
 /**

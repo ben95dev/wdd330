@@ -47,8 +47,13 @@ export function setFavoriteButton(button, saved, title) {
   button.classList.toggle("is-saved", saved);
 }
 
+/** Build one <li> holding a book card for any book in the common shape. */
 export function createBookCard(book) {
-  const detailsUrl = `details.html?id=${encodeURIComponent(book.id)}&source=${book.source}`;
+  // The link also carries the title, author and cover, so the details page can
+  // still show something useful if its own request to the API fails.
+  const query = new URLSearchParams({ id: book.id, source: book.source, title: book.title, author: book.author });
+  if (book.coverUrl) query.set("cover", book.coverUrl);
+  const detailsUrl = `details.html?${query}`;
 
   const link = createEl("a", { className: "book-card__link", attrs: { href: detailsUrl } }, [
     createCover(book),
@@ -56,6 +61,7 @@ export function createBookCard(book) {
       createEl("h3", { className: "book-card__title", text: book.title }),
       createEl("p", { className: "book-card__author", text: book.author }),
       ...(book.year ? [createEl("p", { className: "book-card__year", text: String(book.year) })] : []),
+      ...(book.source === "gutendex" ? [createEl("p", { className: "badge", text: "Free to read" })] : []),
     ]),
   ]);
 

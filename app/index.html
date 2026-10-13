@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>ReadSpace | Find your next book</title>
   <meta name="description" content="Search books, save what you want to read, and track your progress in one place.">
+  <meta name="author" content="Benjamin Iriganje">
   <link rel="icon" href="images/icon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,6 +20,7 @@
   <header id="site-header" class="site-header"></header>
 
   <main id="main">
+    <noscript><p class="message">ReadSpace needs JavaScript to load books. Please turn it on and reload the page.</p></noscript>
     <section class="hero">
       <div class="container">
         <h1>Find your next book.</h1>
@@ -60,6 +62,16 @@
           <span id="saved-count" class="section-note"></span>
         </div>
         <ul id="saved-grid" class="book-grid"></ul>
+      </div>
+    </section>
+
+    <section id="free-section" class="section" aria-labelledby="free-heading">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="free-heading">Free to read</h2>
+          <a href="free.html">See all free books</a>
+        </div>
+        <ul id="free-grid" class="book-grid"></ul>
       </div>
     </section>
 

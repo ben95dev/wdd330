@@ -51,3 +51,52 @@ export async function searchBooks(query, { page = 1, limit = 24, sort } = {}) {
     page,
   };
 }
+
+/** Open Library descriptions are either a string or { value: "..." }. */
+function readDescription(description) {
+  if (!description) return "";
+  return typeof description === "string" ? description : description.value || "";
+}
+
+/** Look up author names for the first few author keys (a failed lookup is skipped). */
+async function getAuthorNames(authorEntries = []) {
+  const keys = authorEntries.map((entry) => entry.author?.key).filter(Boolean).slice(0, 3);
+  const results = await Promise.allSettled(
+    keys.map(async (key) => {
+      const response = await fetch(`${BASE_URL}${key}.json`);
+      if (!response.ok) throw new Error(`Author lookup failed with status ${response.status}`);
+      return (await response.json()).name;
+    })
+  );
+  return results.filter((result) => result.status === "fulfilled" && result.value).map((result) => result.value);
+}
+
+/**
+ * Load one work for the details page.
+ * @param {string} id  Open Library work id, e.g. "OL45804W"
+ * @returns {Promise<object>} the common book shape plus description and link
+ */
+export async function getWork(id) {
+  const response = await fetch(`${BASE_URL}/works/${encodeURIComponent(id)}.json`);
+  if (!response.ok) {
+    throw new Error(`Open Library responded with status ${response.status}`);
+  }
+  const work = await response.json();
+
+  const authors = await getAuthorNames(work.authors);
+  const coverId = (work.covers || []).find((cover) => cover > 0);
+  const year = String(work.first_publish_date || "").match(/\d{4}/);
+
+  return {
+    id,
+    source: "openlibrary",
+    title: work.title || "Untitled",
+    author: authors[0] || "Unknown author",
+    authors,
+    year: year ? Number(year[0]) : null,
+    coverUrl: coverId ? `${COVERS_URL}/b/id/${coverId}-L.jpg?default=false` : null,
+    subjects: (work.subjects || []).slice(0, 10),
+    description: readDescription(work.description),
+    infoUrl: `${BASE_URL}/works/${id}`,
+  };
+}
